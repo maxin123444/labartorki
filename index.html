@@ -1,12 +1,65 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>Лабораторна робота №1</title>
-
-    <script src="ЛАБ1.js"></script>
+<meta charset="utf-8">
+<title>Площа трикутника</title>
 </head>
 
-<body onload="StartLab()">
+<body>
+
+<h3>Обчислення площі трикутника</h3>
+
+<form name="form1">
+
+Введіть сторони трикутника:<br><br>
+
+Сторона a:
+<input type="text" name="a"
+onclick="this.style.backgroundColor='blue'"
+onchange="this.style.backgroundColor='yellow'"
+onblur="this.style.backgroundColor='white'">
+<br><br>
+
+Сторона b:
+<input type="text" name="b"
+onclick="this.style.backgroundColor='lightgreen'"
+onchange="this.style.backgroundColor='yellow'"
+onblur="this.style.backgroundColor='white'">
+<br><br>
+
+Сторона c:
+<input type="text" name="c"
+onclick="this.style.backgroundColor='lightgreen'"
+onchange="this.style.backgroundColor='yellow'"
+onblur="this.style.backgroundColor='white'">
+<br><br>
+
+<input type="button" value="Обчислити"
+onmousedown="this.style.backgroundColor='red'"
+onclick="
+this.style.backgroundColor='lightgreen';
+
+let a=parseFloat(document.form1.a.value);
+let b=parseFloat(document.form1.b.value);
+let c=parseFloat(document.form1.c.value);
+
+if(a+b<=c || a+c<=b || b+c<=a){
+    alert('Трикутник не існує!');
+    document.form1.res.value='';
+}else{
+    let p=(a+b+c)/2;
+    document.form1.res.value=Math.sqrt(p*(p-a)*(p-b)*(p-c)).toFixed(2);
+}
+">
+<br><br>
+
+Площа:
+<input type="text" name="res" readonly>
+<br><br>
+
+<input type="reset">
+
+</form>
+
 </body>
 </html>
