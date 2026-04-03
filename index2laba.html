@@ -2,26 +2,32 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Лабораторна робота</title>
+<title>Лабораторна</title>
 </head>
 
 <body>
 
 <h2>1. Обчислення суми</h2>
 
+<form name="f1">
 Введіть x:
-<input type="number" id="x">
-<button onclick="calcSum()">Обчислити</button>
-
-<p>Результат: <span id="sumResult"></span></p>
+<input type="text" name="x">
+<input type="button" value="Обчислити" onclick="calcSum()">
+<br><br>
+Результат:
+<input type="text" name="res">
+</form>
 
 <hr>
 
 <h2>2. Робота з масивом</h2>
 
-<button onclick="processArray()">Обробити масив</button>
-
-<p>Результат: <span id="arrayResult"></span></p>
+<form name="f2">
+<input type="button" value="Обробити масив" onclick="processArray()">
+<br><br>
+Результат:
+<input type="text" name="res2">
+</form>
 
 <script src="main2lb.js"></script>
 
