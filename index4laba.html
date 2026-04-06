@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Годинник і об'єкт Комп'ютер</title>
+
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial;
+            transition: background 1s;
+        }
+
+        #clock {
+            font-size: 48px;
+            margin-top: 50px;
+        }
+
+        .form {
+            margin-top: 40px;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>Годинник</h1>
+<div id="clock"></div>
+
+<div class="form">
+    <h2>Інформація про комп'ютер</h2>
+    <input type="text" id="brand" placeholder="Бренд"><br><br>
+    <input type="text" id="cpu" placeholder="Процесор"><br><br>
+    <input type="number" id="ram" placeholder="RAM (GB)"><br><br>
+
+    <button onclick="saveComputer()">Зберегти</button>
+
+    <p id="output"></p>
+</div>
+
+<script>
+    // --- 1. ГОДИННИК І ЗМІНА ФОНУ ---
+
+    const textures = [
+        "url('https://picsum.photos/id/1015/1200/800')",
+        "url('https://picsum.photos/id/1016/1200/800')",
+        "url('https://picsum.photos/id/1018/1200/800')",
+        "url('https://picsum.photos/id/1020/1200/800')"
+    ];
+
+    let lastHour = -1;
+
+    function updateClock() {
+        const now = new Date();
+        const hours = now.getHours();
+        const minutes = now.getMinutes();
+        const seconds = now.getSeconds();
+
+        document.getElementById("clock").innerText =
+            `${hours.toString().padStart(2, '0')}:` +
+            `${minutes.toString().padStart(2, '0')}:` +
+            `${seconds.toString().padStart(2, '0')}`;
+
+        // Зміна фону на початку години
+        if (hours !== lastHour) {
+            const index = hours % 4;
+            document.body.style.backgroundImage = textures[index];
+            document.body.style.backgroundSize = "cover";
+            lastHour = hours;
+        }
+    }
+
+    setInterval(updateClock, 1000);
+
+    // --- 2. ОБ'ЄКТ "КОМП'ЮТЕР" ---
+
+    function saveComputer() {
+        const computer = {
+            brand: document.getElementById("brand").value,
+            cpu: document.getElementById("cpu").value,
+            ram: document.getElementById("ram").value
+        };
+
+        document.getElementById("output").innerText =
+            `Комп'ютер:\nБренд: ${computer.brand}, ` +
+            `CPU: ${computer.cpu}, RAM: ${computer.ram} GB`;
+
+        console.log(computer);
+    }
+</script>
+
+</body>
+</html>
